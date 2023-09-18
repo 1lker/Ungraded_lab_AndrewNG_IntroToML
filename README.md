@@ -1,5 +1,5 @@
 # Ungraded Lab - Deploying a Deep Learning model
- 
+THANKS FOR THIS LAB TO PROFESSOR ANDREW NG
 ## Introduction
 Welcome to the first week of Machine Learning Engineering for Production Course 1. During this ungraded lab you will go through the process of deploying an already trained Deep Learning model. To do so, we will take advantage of the user-friendly library fastAPI that provides a nice REST API framework.
  
@@ -8,6 +8,74 @@ This tutorial is specifically designed to run locally on your machine. This can 
 Both approaches should yield the same result. If you already have a conda installation available on your computer, we recommend  that you use the virtual environment method. If this is not the case, choose the Docker method as it is easier to set up.
  
 As a general note, the commands in this tutorial are meant to be run within a terminal. To begin you need to **clone this repo in your local filesystem and `cd` to the week1-ungraded-lab directory**.
+
+ADDED: 
+
+## Install and activate the virtualenv
+
+Create virtual env
+`conda create --name myenv`
+
+Acticate myenv
+`conda activate myenv`
+
+
+To make it properly executable on M2 chips on MacOS:
+Please use conda commands
+
+## Install Tensorflow
+
+Install TF dependencies:
+
+`conda install -c apple tensorflow-deps`
+
+
+Install TF for mac:
+
+`python -m pip install tensorflow-macos`
+
+Install TF Metal plugin:
+
+`python -m pip install tensorflow-metal`
+
+-------
+## Install OpenCV
+
+Add conda-forge to your list of channels (in this context channels are where libraries are pulled from):
+
+`conda config --add channels conda-forge`
+
+Install OpenCV:
+
+`conda install -c conda-forge opencv===4.5.3`
+
+Check your OpenCV installation:
+
+`python -c "import cv2; print(cv2.__version__)" `
+
+This command should print `4.5.3` in your terminal.
+
+If it is not print it than use pip3 install.
+
+`pip install opencv-python` if not work than use `pip3` instead of `pip` if still asserts error than try:
+
+`conda install opencv`
+
+On the case, cvlib directs an error try:
+`pip install --upgrade cvlib`
+
+## Modifying requirements.txt
+
+Since you have already installed versions of Tensorflow and OpenCV that are compatible with your mac you need to prevent these from getting modified in the next step.
+
+To do this, open the `requirements.txt` and comment-out or delete the lines:
+
+```txt
+opencv-python-headless==4.5.3.56
+tensorflow==2.7.0
+```
+
+///////////// ORIGINAL README.md
 
 To clone the repo use this command:
 ```bash
@@ -151,3 +219,6 @@ Once you have authenticated, click in the `/work` directory and you should see a
 To stop the container once you are done with the lab just press `Ctrl + C` twice. This will also delete the container.
  
 ### And... that's it! Have fun deploying a Deep Learning model! :)
+
+
+
